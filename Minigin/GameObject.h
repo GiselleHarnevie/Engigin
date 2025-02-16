@@ -7,9 +7,11 @@ namespace dae
 	class Texture2D;
 
 	// todo: this should become final.
-	class GameObject 
+	class GameObject
 	{
 	public:
+		//get rid of virtuals cos final class
+		virtual void FixedUpdate(float fixedTimeStep);
 		virtual void Update();
 		virtual void Render() const;
 
