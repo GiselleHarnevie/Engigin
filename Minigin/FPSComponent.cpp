@@ -1,7 +1,7 @@
 #include "FPSComponent.h"
 
 
-dae::FPSComponent::FPSComponent(Transform& transform, TextComponent& textComponent)
+dae::FPSComponent::FPSComponent(Transform& transform, TextComponent& /*textComponent*/)
 	: Component(dae::ComponentTypes::FPS, transform)
 {
 }
