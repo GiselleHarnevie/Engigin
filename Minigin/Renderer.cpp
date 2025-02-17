@@ -33,9 +33,10 @@ void dae::Renderer::Render() const
 	SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
 	SDL_RenderClear(m_renderer);
 
-	SceneManager::GetInstance().Render();
+	SceneManager::GetInstance().Render(); ///
 	
 	SDL_RenderPresent(m_renderer);
+
 }
 
 void dae::Renderer::Destroy()

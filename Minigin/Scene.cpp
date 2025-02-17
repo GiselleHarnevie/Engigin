@@ -1,5 +1,7 @@
 #include "Scene.h"
 #include "GameObject.h"
+#include "GraphicsComponent.h"
+#include "Component.h"
 
 #include <algorithm>
 
@@ -34,11 +36,11 @@ void dae::Scene::FixedUpdate(float fixedTimeStep)
 	}
 }
 
-void Scene::Update()
+void Scene::Update(float elapsedSec)
 {
 	for(auto& object : m_objects)
 	{
-		object->Update();
+		object->Update(elapsedSec);
 	}
 }
 
@@ -46,7 +48,12 @@ void Scene::Render() const
 {
 	for (const auto& object : m_objects)
 	{
-		object->Render();
+		std::shared_ptr<GraphicsComponent> graphicsObject{ object->GetComponent<GraphicsComponent>(ComponentTypes::GRAPHICS) };
+		if (graphicsObject != nullptr)
+		{
+			graphicsObject->Render();
+		}
+
 	}
 }
 

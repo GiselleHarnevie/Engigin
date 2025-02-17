@@ -90,7 +90,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 
-	// todo: this update loop could use some work. UPDATING
+	// todo: this update loop could use some work.
 	//want game to run on 60fps, so 16 milliseconds /0.016s per frame
 
 	bool doContinue = true;
@@ -111,7 +111,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 			lag -= fixed_time_step;
 		}
 
-		sceneManager.Update();
+		sceneManager.Update(delta_time);
 		renderer.Render();
 
 		const auto sleep_time = current_time +

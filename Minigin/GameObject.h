@@ -1,22 +1,40 @@
 #pragma once
 #include <memory>
+#include <vector>
 #include "Transform.h"
+#include "Component.h"
 
 namespace dae
 {
-	class Texture2D;
-
-	// todo: this should become final.
-	class GameObject
+	//class Texture2D;
+	//class Component;
+	class GameObject final
 	{
 	public:
-		//get rid of virtuals cos final class
-		virtual void FixedUpdate(float fixedTimeStep);
-		virtual void Update();
-		virtual void Render() const;
-
-		void SetTexture(const std::string& filename);
 		void SetPosition(float x, float y);
+		void FixedUpdate(float fixedTimeStep);
+		void Update(float elapsedSec);
+		//void Render() const; //move
+
+		void AddComponent(std::shared_ptr<Component> component)
+		{
+			m_Components.emplace_back(std::move(component));
+		}
+
+		template<typename T>
+		std::shared_ptr<T> GetComponent(ComponentTypes componentType) //getcomponent<playeraudio>();, getcomponent<playerinput>()
+		{
+			for (auto i{ m_Components.begin() }; i != m_Components.end(); ++i)
+			{
+				std::shared_ptr<Component> component{ *i };
+				if (component->GetComponentType() == componentType)
+					return std::static_pointer_cast<T>(component);
+			}
+			return nullptr;
+		}
+
+		//void SetTexture(const std::string& filename); //move
+		Transform& GetTransform();
 
 		GameObject() = default;
 		virtual ~GameObject();
@@ -26,8 +44,8 @@ namespace dae
 		GameObject& operator=(GameObject&& other) = delete;
 
 	private:
-		Transform m_transform{};
-		// todo: mmm, every gameobject has a texture? Is that correct?
-		std::shared_ptr<Texture2D> m_texture{};
+		Transform m_Transform{}; 
+		std::vector<std::shared_ptr<Component>> m_Components;
+
 	};
 }

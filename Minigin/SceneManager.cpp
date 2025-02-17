@@ -9,11 +9,11 @@ void dae::SceneManager::FixedUpdate(float fixedTimeStep)
 	}
 }
 
-void dae::SceneManager::Update()
+void dae::SceneManager::Update(float elapsedSec)
 {
 	for(auto& scene : m_scenes)
 	{
-		scene->Update();
+		scene->Update(elapsedSec);
 	}
 }
 
