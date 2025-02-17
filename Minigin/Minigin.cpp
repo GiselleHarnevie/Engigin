@@ -12,12 +12,11 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
+#include <iostream>
 
 using namespace std::chrono;
 
 SDL_Window* g_window{};
-const int MS_PER_FRAME = 16; //todo: move
-const float fixed_time_step = 1.0f / 60.0f; //todo: move config setting
 
 void PrintSDLVersion()
 {
@@ -93,9 +92,12 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	// todo: this update loop could use some work.
 	//want game to run on 60fps, so 16 milliseconds /0.016s per frame
 
+	const float MS_PER_FRAME = 16.f; //todo: move
+	const float fixed_time_step = 1.0f / 60.0f; //todo: move config setting
 	bool doContinue = true;
 	auto last_time = high_resolution_clock::now();
 	float lag = 0.f;
+
 	while (doContinue)
 	{
 		const auto current_time = high_resolution_clock::now(); //get current time
@@ -104,7 +106,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		lag += delta_time;
 
 		doContinue = input.ProcessInput();
-
+		
 		while (lag >= fixed_time_step)
 		{
 			sceneManager.FixedUpdate(fixed_time_step);
@@ -115,9 +117,10 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		renderer.Render();
 
 		const auto sleep_time = current_time +
-			milliseconds(MS_PER_FRAME)
+			milliseconds(static_cast<int>(MS_PER_FRAME))
 			- high_resolution_clock::now();
 
 		std::this_thread::sleep_for(sleep_time);
+
 	}
 }

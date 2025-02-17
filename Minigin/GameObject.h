@@ -6,15 +6,12 @@
 
 namespace dae
 {
-	//class Texture2D;
-	//class Component;
 	class GameObject final
 	{
 	public:
 		void SetPosition(float x, float y);
 		void FixedUpdate(float fixedTimeStep);
 		void Update(float elapsedSec);
-		//void Render() const; //move
 
 		void AddComponent(std::shared_ptr<Component> component)
 		{
@@ -22,7 +19,7 @@ namespace dae
 		}
 
 		template<typename T>
-		std::shared_ptr<T> GetComponent(ComponentTypes componentType) //getcomponent<playeraudio>();, getcomponent<playerinput>()
+		std::shared_ptr<T> GetComponent(ComponentTypes componentType) 
 		{
 			for (auto i{ m_Components.begin() }; i != m_Components.end(); ++i)
 			{
@@ -33,7 +30,6 @@ namespace dae
 			return nullptr;
 		}
 
-		//void SetTexture(const std::string& filename); //move
 		Transform& GetTransform();
 
 		GameObject() = default;
