@@ -89,10 +89,9 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 
-	// todo: this update loop could use some work.
 	//want game to run on 60fps, so 16 milliseconds /0.016s per frame
 
-	const float MS_PER_FRAME = 16.f; //todo: move
+	const float MS_PER_FRAME = 16.f; 
 	const float fixed_time_step = 1.0f / 60.0f; //todo: move config setting
 	bool doContinue = true;
 	auto last_time = high_resolution_clock::now();

@@ -1,13 +1,8 @@
 #include "GraphicsComponent.h"
 #include "ResourceManager.h"
 
-dae::GraphicsComponent::GraphicsComponent(Transform& transform)
-	: Component(dae::ComponentTypes::GRAPHICS, transform)
-{
-
-}
-
-dae::GraphicsComponent::~GraphicsComponent()
+dae::GraphicsComponent::GraphicsComponent(GameObject* gameobject)
+	: Component(gameobject)
 {
 
 }
@@ -19,4 +14,8 @@ void dae::GraphicsComponent::Update(float /*elapsedSec*/)
 void dae::GraphicsComponent::Render() const
 {
 	
+}
+
+void dae::GraphicsComponent::FixedUpdate(const float /*fixedTimeStep*/)
+{
 }

@@ -5,28 +5,23 @@
 namespace dae
 {
 	class GameObject;
-	enum class ComponentTypes {
-		PHYSICS,
-		GRAPHICS,
-		INPUT,
-		FPS
-	};
 
 	class Component
 	{
+		GameObject* m_pOwner;
 	public:
-		Component(ComponentTypes type, Transform& transform);
-		~Component();
+		virtual ~Component()= default;
+		Component(const Component& other) = delete;
+		Component(Component&& other) = delete;
+		Component& operator= (const Component& other) = delete;
+		Component& operator= (Component&& other) = delete;
 
-		virtual void FixedUpdate(const float fixedTimeStep);
-		virtual void Update(float elapsedSec);
-
-		ComponentTypes GetComponentType();
-
+		virtual void Update(float elapsedSec) =0;
+		virtual void FixedUpdate(const float fixedTimeStep)=0;
 
 	protected:
-		ComponentTypes m_ComponentType;
-		Transform& m_Transform;
+		explicit Component(GameObject* pOwner);
+		GameObject* GetOwner() const;
 	};
 
 }

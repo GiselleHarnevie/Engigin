@@ -38,7 +38,7 @@ void dae::Scene::FixedUpdate(float fixedTimeStep)
 
 void Scene::Update(float elapsedSec)
 {
-	for(auto& object : m_objects)
+	for (auto& object : m_objects)
 	{
 		object->Update(elapsedSec);
 	}
@@ -48,7 +48,7 @@ void Scene::Render() const
 {
 	for (const auto& object : m_objects)
 	{
-		std::shared_ptr<GraphicsComponent> graphicsObject{ object->GetComponent<GraphicsComponent>(ComponentTypes::GRAPHICS) };
+		GraphicsComponent* graphicsObject{ object->GetComponent<GraphicsComponent>() };
 		if (graphicsObject != nullptr)
 		{
 			graphicsObject->Render();

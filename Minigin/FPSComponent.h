@@ -7,17 +7,19 @@ namespace dae
 	class FPSComponent :public Component
 	{
 	public:
-		FPSComponent(Transform& transform, TextComponent& textComponent);
-		~FPSComponent();
+		FPSComponent(GameObject* gameObject);
+		virtual ~FPSComponent()=default;
 
 		void Update(float elapsedSec) override;
-		float GetFPS();
+		void FixedUpdate(const float fixedTimeStep) override;
+		int GetFPS() const;
 
 	private:
-		TextComponent& textComponent;
+		TextComponent* textComponent;
 		int m_FrameCount;
 		float m_FPSTimer;
-		float m_FPS;
+		int m_FPS;
+
 	};
 }
 

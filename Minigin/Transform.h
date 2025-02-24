@@ -2,13 +2,20 @@
 #include <glm.hpp>
 
 namespace dae
-{
+{	
 	class Transform final
 	{
 	public:
-		const glm::vec3& GetPosition() const { return m_position; }
-		void SetPosition(float x, float y, float z);
+		Transform();
+
+		const glm::vec3& GetLocalPosition() const { return m_LocalPosition; }
+		glm::vec3 GetWorldPosition() const;
+
+		void SetLocalPosition(float x, float y, float z);
+
 	private:
-		glm::vec3 m_position;
+		glm::vec3 m_LocalPosition;
+		Transform* m_Parent;
+	
 	};
 }
