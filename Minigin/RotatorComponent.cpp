@@ -21,8 +21,8 @@ void dae::RotatorComponent::Update(float elapsedSec)
     else if (m_Angle < 0)
         m_Angle += m_tempPi * 2;
 
-    glm::vec3 parentPos = GetOwner()->GetLocalPosition();
-    glm::vec3 newPos = parentPos + glm::vec3(cos(m_Angle) * m_Radius,
+    //glm::vec3 parentPos = GetOwner()->GetLocalPosition();
+    glm::vec3 newPos = glm::vec3(cos(m_Angle) * m_Radius,
                                              sin(m_Angle) * m_Radius,
                                              0.f);
 
