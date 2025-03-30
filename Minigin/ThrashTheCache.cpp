@@ -16,12 +16,12 @@ dae::ThrashTheCache::ThrashTheCache(GameObject* owner)
 
 void dae::ThrashTheCache::Update(float /*elapsedSec*/)
 {
-	ImGui_ImplOpenGL3_NewFrame();
+	/*ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
 	ImGui::ShowDemoWindow();
 
-	RenderImGui();
+	RenderImGui();*/
 }
 
 void dae::ThrashTheCache::FixedUpdate(const float /*fixedTimeStep*/)

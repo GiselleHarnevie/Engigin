@@ -5,6 +5,7 @@
 #include <type_traits>
 #include "Transform.h"
 #include "Component.h"
+#include "Observable.h"
 
 
 namespace dae
@@ -57,7 +58,6 @@ namespace dae
 		const glm::vec3& GetLocalPosition();
 		void SetPositionDirty();
 
-
 	private:
 		void UpdateWorldPosition();
 		void AddChild(GameObject* child);
@@ -70,5 +70,7 @@ namespace dae
 		std::vector<std::unique_ptr<Component>> m_Components;
 		GameObject* m_pParent;
 		std::vector<GameObject*> m_pChildren;
+
+		//std::unique_ptr<Observable> m_DiedEvent;
 	};
 }

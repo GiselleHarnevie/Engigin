@@ -14,6 +14,7 @@ void dae::Component::FixedUpdate(const float /*fixedTimeStep*/)
 
 void dae::Component::Update(float /*elapsedSec*/)
 {
+
 }
 
 dae::GameObject* dae::Component::GetOwner() const
