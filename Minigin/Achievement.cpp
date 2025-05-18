@@ -2,7 +2,7 @@
 #include "Observable.h"
 #include <iostream>
 
-
+//can delete
 void dae::Achievement::Notify(GameEvent event, GameObject* /*gameObject*/)
 {
 	switch (event)

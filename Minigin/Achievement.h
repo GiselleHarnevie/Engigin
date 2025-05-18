@@ -1,6 +1,7 @@
 #pragma once
 #include "Observer.h"
 
+//can delete
 namespace dae
 {
 	enum class AchievementType

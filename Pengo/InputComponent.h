@@ -15,10 +15,21 @@ namespace dae
 		void Update(float elapsedSec) override;
 		void FixedUpdate(const float fixedTimeStep) override;
 
-		std::unique_ptr<MoveCommand> m_pMoveUp;
-		std::unique_ptr<MoveCommand> m_pMoveDown;
-		std::unique_ptr<MoveCommand> m_pMoveRight;
-		std::unique_ptr<MoveCommand> m_pMoveLeft;
+		//move
+		MoveCommand* GetMoveDownCommand();
+		MoveCommand* GetMoveRightCommand();
+		MoveCommand* GetMoveLeftCommand();
+
+		//kill
+
+		//push
+
+		//
+
+		MoveCommand* m_pMoveUp;
+		MoveCommand* m_pMoveDown;
+		MoveCommand* m_pMoveRight;
+		MoveCommand* m_pMoveLeft;
 		std::unique_ptr<DamageCommand> m_pTakeDamage;
 		/*std::unique_ptr<MoveCommand> m_pZ;
 		std::unique_ptr<MoveCommand> m_pX;*/
